@@ -1,0 +1,32 @@
+﻿@model Producto
+
+<h1 class="mb-4">Crear nuevo producto</h1> 
+
+<form asp-action="Crear" method="post">
+    <div class="form-group">
+        <label asp-for="Nombre" class="control-label" style="font-size: 0.9rem;"></label> 
+        <input asp-for="Nombre" class="form-control" style="width: 40%;" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Precio" class="control-label" style="font-size: 0.9rem;"></label> 
+        <input asp-for="Precio" class="form-control" type="number" step="any" style="width: 10%;" />
+        <span asp-validation-for="Precio" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary" onclick="return validarNombre()">Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+
+<script>
+    function validarNombre() {
+        var nombre = document.getElementById("Nombre").value;
+        if (nombre.trim() === "") {
+            alert("Por favor, ingresa al menos un nombre para el producto.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
